@@ -70,7 +70,8 @@ public class FoodPantryRunner extends JPanel {
         g.drawString("Perishable", 240, y);
         g.drawString("Expiry", 340, y);
         g.drawString("Location", 440, y);
-        g.drawString("Remove", 540, y);
+        g.drawString("Expired", 540, y);
+        g.drawString("Remove", 640, y);
 
         g.setFont(new Font("Arial", Font.PLAIN, 14));
         y += 24;
@@ -81,10 +82,14 @@ public class FoodPantryRunner extends JPanel {
             g.drawString(item.isPerishable() ? "Yes" : "No", 240, y);
             g.drawString(item.getExpiryDate() == null ? "N/A" : item.getExpiryDate(), 340, y);
             g.drawString(item.getLocation(), 440, y);
+            // Expired column
+            String expiredText = item.isExpired() ? "Yes" : "No";
+            g.setColor(item.isExpired() ? Color.RED : Color.BLACK);
+            g.drawString(expiredText, 540, y);
             // Draw a simple [Remove] button as text
             g.setColor(Color.RED);
-            g.drawRect(530, y - 14, 70, 20);
-            g.drawString("Remove", 540, y);
+            g.drawRect(630, y - 14, 70, 20);
+            g.drawString("Remove", 640, y);
             g.setColor(Color.BLACK);
             y += 22;
         }
@@ -95,7 +100,7 @@ public class FoodPantryRunner extends JPanel {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 int y = 144; // start of first row (120+24)
                 for (int i = 0; i < items.size(); i++) {
-                    int x = 530, bY = y - 14, w = 70, h = 20;
+                    int x = 630, bY = y - 14, w = 70, h = 20;
                     if (e.getX() >= x && e.getX() <= x + w && e.getY() >= bY && e.getY() <= bY + h) {
                         items.remove(i);
                         repaint();
