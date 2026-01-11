@@ -46,7 +46,7 @@ public class FoodPantryRunner extends JPanel {
         });
 
 
-        // Add some starter items
+    
         items.add(new FoodItem("Milk", 10, true, "2023-10-15", "Fridge"));
         items.add(new FoodItem("Canned Beans", 50, false, "2025-05-01", "Pantry"));
     }
@@ -58,6 +58,9 @@ public class FoodPantryRunner extends JPanel {
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.setColor(Color.GRAY);
+        g.fillRect(40, 40, getWidth() - 80, 60);
+        g.setColor(Color.BLACK);
         g.drawString("Food Pantry Management System", 60, 80);
 
         g.setFont(new Font("Arial", Font.BOLD, 14));
@@ -87,7 +90,6 @@ public class FoodPantryRunner extends JPanel {
         }
     }
 
-    // Add mouse listener to handle remove button clicks
     {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -105,7 +107,7 @@ public class FoodPantryRunner extends JPanel {
         });
     }
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Food Pantry");
+        JFrame frame = new JFrame("PantryPulse");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
         frame.add(new FoodPantryRunner());
